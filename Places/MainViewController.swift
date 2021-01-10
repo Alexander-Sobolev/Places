@@ -12,7 +12,7 @@ class MainViewController: UITableViewController {
     let restaurantNames = [
         "Mirazur", "Noma 2.0", "Asador Etxebarri", "Gaggan",
         "Geranium", "Central", "Mugaritz", "Arpege",
-        "Disfrutar", "Maido"
+        "Disfrutar", "Maidoo"
     ]
 
     override func viewDidLoad() {

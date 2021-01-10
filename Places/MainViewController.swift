@@ -12,7 +12,7 @@ class MainViewController: UITableViewController {
     let restaurantNames = [
         "Mirazur", "Noma 2.0", "Asador Etxebarri", "Gaggan",
         "Geranium", "Central", "Mugaritz", "Arpege",
-        "Disfrutar", "Maidoo"
+        "Disfrutar", "Maido"
     ]
 
     override func viewDidLoad() {
@@ -31,6 +31,7 @@ class MainViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         cell.textLabel?.text = restaurantNames[indexPath.row]
+        cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row])
 
         return cell
     }

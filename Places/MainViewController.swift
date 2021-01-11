@@ -32,8 +32,16 @@ class MainViewController: UITableViewController {
 
         cell.textLabel?.text = restaurantNames[indexPath.row]
         cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row])
-
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2   // Для того чтобы сделать прямоугольники с скругленными краями ставим 65 / 2 вместо cell.frame.size.height / 2
+        cell.imageView?.clipsToBounds = true
+        
         return cell
+    }
+    
+    // MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 95
     }
 
     /*

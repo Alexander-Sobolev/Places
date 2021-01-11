@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--My Best Restaurants-->
         <scene sceneID="y2h-Mb-QeU">
             <objects>
                 <tableViewController id="bya-tq-NFK" customClass="MainViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="bya-tq-NFK" id="k0N-no-jXV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="X7a-bk-CeJ"/>
+                    <navigationItem key="navigationItem" title="My Best Restaurants" id="X7a-bk-CeJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2G-pX-mqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,6 +43,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KDK-GM-yaG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="30"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="bya-tq-NFK" kind="relationship" relationship="rootViewController" id="uUr-U4-Mkb"/>

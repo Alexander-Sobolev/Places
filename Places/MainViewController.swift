@@ -28,20 +28,21 @@ class MainViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell // приводим объект cell к нашему классу as! CustomTableViewCell
+        // Отображаем данные в ячейке, приводим объект cell к нашему классу
 
-        cell.textLabel?.text = restaurantNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row])
-        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2   // Для того чтобы сделать прямоугольники с скругленными краями ставим 65 / 2 вместо cell.frame.size.height / 2
-        cell.imageView?.clipsToBounds = true
+        cell.nameLable.text = restaurantNames[indexPath.row] // меняем свойства родительского класса UITableViewCell а именно textLabel? на cвойства нашего класса CustomTableViewCell а именно nameLable то есть на те аутлеты которые мы создали
+        cell.imageOfPlace.image = UIImage(named: restaurantNames[indexPath.row]) // тут меняем imageView? на imageOfPlace ниже так же меняем на imageOfPlace
+        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2   // Для того чтобы сделать прямоугольники с скругленными краями ставим 65 / 2 вместо cell.imageOfPlace.frame.size.height / 2
+        cell.imageOfPlace.clipsToBounds = true
         
         return cell
     }
     
     // MARK: - Table View Delegate
-    
+    // Метод определяет высоту строк
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
+        return 85
     }
 
     /*

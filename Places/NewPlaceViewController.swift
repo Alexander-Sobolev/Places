@@ -23,6 +23,7 @@ class NewPlaceViewController: UITableViewController {
     // If the cell has index 0, call the menu for the user to select the image else the keyboard should be hidden
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         if indexPath.row == 0 {
             
             let takeImage = #imageLiteral(resourceName: "camera") // Добавляем иконки в меню // Adding icons to the menu

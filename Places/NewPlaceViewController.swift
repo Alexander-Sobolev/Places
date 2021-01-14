@@ -29,7 +29,7 @@ class NewPlaceViewController: UITableViewController {
             let takeImage = #imageLiteral(resourceName: "camera") // Добавляем иконки в меню // Adding icons to the menu
             let chooseImage = #imageLiteral(resourceName: "photo") // Добавляем иконки в меню // Adding icons to the menu
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet) // При тапе на ячейку с изображением мы вызываем меню AlertController с низа экрана
-            // When tapping on a cell with an image, we call the AlertController menu from the bottom of the screen
+            // When tapping on a cell with an image, we call the AlertController menu from the bottom of the screen 
             
             
             // Определяем список пользовательских действий в этом меню

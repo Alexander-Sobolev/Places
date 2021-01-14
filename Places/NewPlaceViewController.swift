@@ -31,6 +31,7 @@ class NewPlaceViewController: UITableViewController {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet) // При тапе на ячейку с изображением мы вызываем меню AlertController с низа экрана
             // When tapping on a cell with an image, we call the AlertController menu from the bottom of the screen
             
+            
             // Определяем список пользовательских действий в этом меню
             // Define a list of custom actions in this menu
             let camera = UIAlertAction(title: "Take photo", style: .default) { _ in

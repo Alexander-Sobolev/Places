@@ -9,13 +9,19 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
 
-    @IBOutlet weak var imageOfPlace: UIImageView! // Добавляем аутлет для работы с изображением // Add an outlet for working with images
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var placeImage: UIImageView! // Добавляем аутлет для работы с изображением // Add an outlet for working with images
+    @IBOutlet weak var placeType: UITextField!
+    @IBOutlet weak var placeLocation: UITextField!
+    @IBOutlet weak var placeName: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Убираем линии ниже там где нет контента
         // Remove the lines below where there is no content
         tableView.tableFooterView = UIView()
+        
+        saveButton.isEnabled = false // По умолчанию кнопка Save будет отключена // The Save button will be disabled by default
     }
 
     // MARK: - Table View Delegate
@@ -92,9 +98,9 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
         }
     }// Вэтом методе присваиваем @IBOutlet weak var imageOfPlace: UIImageView! изображение которое выбирает пользователь
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imageOfPlace.image = info[.editedImage] as? UIImage // Мы взяли значение по ключу .editedImage и присвоили его как UIImage свойству imageOfPlace для того чтобы использовать отредактированное пользователем изображение // We took the value by the .editedImage key and assigned it as a UIImage to the imageOfPlace property in order to use the user-edited image
-        imageOfPlace.contentMode = .scaleAspectFill // Позволяет маcштабировать изображение // Allows you to scale the image
-        imageOfPlace.clipsToBounds = true // Обрезка изображения по границе UIImage // Cropping an Image to a UIImage Border
+        placeImage.image = info[.editedImage] as? UIImage // Мы взяли значение по ключу .editedImage и присвоили его как UIImage свойству imageOfPlace для того чтобы использовать отредактированное пользователем изображение // We took the value by the .editedImage key and assigned it as a UIImage to the imageOfPlace property in order to use the user-edited image
+        placeImage.contentMode = .scaleAspectFill // Позволяет маcштабировать изображение // Allows you to scale the image
+        placeImage.clipsToBounds = true // Обрезка изображения по границе UIImage // Cropping an Image to a UIImage Border
         dismiss(animated: true) // Закрываем ImagePickerController // Close ImagePickerController
     }
 }

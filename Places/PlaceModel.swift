@@ -5,15 +5,16 @@
 //  Created by Alexander Sobolev on 12.01.2021.
 //
 
-import Foundation
+import UIKit // Меняем фреймворк Foundation на UIKit который уже содержит фреймворк Foundation // Changing the Foundation framework to UIKit which already contains the Foundation framework
 
 struct Place { // Создаем модель для возможности добавления записей названия, местоположения, типа а так же изображения в нашем приложении
                // We create a model for the ability to add records of name, location, type, as well as an image in our application
     
     var name: String
-    var location: String
-    var type: String
-    var image: String
+    var location: String?
+    var type: String?
+    var image: UIImage?
+    var restaurantImage: String?
     
     static let restaurantNames = [ // тут также ставим static // here we also put static
             "Mirazur", "Noma 2.0", "Asador Etxebarri", "Gaggan",
@@ -27,7 +28,7 @@ struct Place { // Создаем модель для возможности до
         var places = [Place]()
         
         for place in restaurantNames {
-            places.append(Place(name: place, location: "France", type: "Restaurant", image: place))
+            places.append(Place(name: place, location: "France", type: "Restaurant", image: nil, restaurantImage: place))
         }
         
         return places

@@ -27,7 +27,7 @@ class NewPlaceViewController: UITableViewController {
         
         saveButton.isEnabled = false // По умолчанию кнопка Save будет отключена // The Save button will be disabled by default
         
-        placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged) // При введении данных кнопка Save становится доступной, при удалении данных кнопка Save становится не доступной // When entering data, the Save button becomes available, when deleting data, the Save button becomes unavailable
     }
 
     // MARK: - Table View Delegate

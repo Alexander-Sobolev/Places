@@ -15,7 +15,7 @@ class MainViewController: UITableViewController {
 //        "Disfrutar", "Maido"
 //    ]
 
-    let places = Place.getPlaces()
+    var places = Place.getPlaces()
     // Меняем массив [Place(name: "Mirazur", location: "France", type: "Restaurant", image: "Mirazur")] на Place.getPlaces()
     // Change the array [Place (name: "Mirazur", location: "France", type: "Restaurant", image: "Mirazur")] to Place.getPlaces ()
     override func viewDidLoad() {
@@ -59,7 +59,14 @@ class MainViewController: UITableViewController {
     // The method that determines the height of the rows: heightForRowAt indexPath
     //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     //  return 85   // Высоту строки мы настроили через Интерфейсбилдер поэтому данные строки кода можно удалять, но я оставлю для общего понимания // We adjusted the height of the line through the Interface Builder, so these lines of code can be deleted, but I'll leave it for general understanding
-    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {} // Объявляем метод для выхода с TabelView New Places на Table View My Best Restaurants // Declaring a method to exit from TableView New Places to Table View My Best Restaurants
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        
+        guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
+        
+        newPlaceVC.saveNewPlace()
+        places.append(newPlaceVC.newPlace!) // Ставим принудительное извлечение опционала так как мы не сможем нажать на кнопу Save если не введем какое либо значение а данный метод в котором мы работаем вызывается только при нажатии на кнопку Save // We set the forced extraction of the optional since we cannot click on the Save button if we do not enter any value and this method in which we are working is called only when we click on the Save button
+        tableView.reloadData() // Обновляем интерфейс // Updating the interface
+    } // Объявляем метод для выхода с TabelView New Places на Table View My Best Restaurants // Declaring a method to exit from TableView New Places to Table View My Best Restaurants
     // Мы не будем реализовывать этот метод, нам просто нужно чтобы мы могли на него сослаться и закрепить кнопку Cancel // We won't be implementing this method, we just need to be able to reference it and fix the Cancel button
     // Переименовываем метод cancelAction на unwindSegue и связываем его с кнопкой Save // Rename the cancelAction method to unwindSegue and associate it with the Save button
     }

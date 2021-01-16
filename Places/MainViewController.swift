@@ -44,8 +44,15 @@ class MainViewController: UITableViewController {
         //  Assigning a specific value to the location property
         cell.typeLable.text = place.type // Присваиваем свойству type конкретное значение
         //  Assigning a specific value to the type property
-        cell.imageOfPlace.image = UIImage(named: places[indexPath.row].restaurantImage!) // 2. меняем массив restaurantNames на places и в конце добавляем свойство .image так из массива places мы вытаскиваем конкретно объект image 1. тут меняем imageView? на imageOfPlace ниже так же меняем на imageOfPlace
-        //  2. change the array restaurantNames to places and at the end add the .image property so from the places array we pull out the image object specifically 1. change the imageView here? on imageOfPlace below also change to imageOfPlace
+        
+        if place.image == nil {
+            cell.imageOfPlace.image = UIImage(named: place.restaurantImage!) // 2. меняем массив restaurantNames на places и в конце добавляем свойство .image так из массива places мы вытаскиваем конкретно объект image 1. тут меняем imageView? на imageOfPlace ниже так же меняем на imageOfPlace
+            //  2. change the array restaurantNames to places and at the end add the .image property so from the places array we pull out the image object specifically 1. change the imageView here? on imageOfPlace below also change to imageOfPlace
+        } else {
+            cell.imageOfPlace.image = place.image
+        }
+        
+
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2   // Для того чтобы сделать прямоугольники с скругленными краями ставим 65 / 2 вместо cell.imageOfPlace.frame.size.height / 2
         //  In order to make rectangles with rounded edges, put 65/2 instead of cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace.clipsToBounds = true // обрезаем изображение по границам imageView при помощи свойсва .clipsToBounds

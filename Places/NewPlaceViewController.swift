@@ -10,6 +10,8 @@ import UIKit
 class NewPlaceViewController: UITableViewController {
     
     var newPlace: Place?
+    var imageIsChanged = false
+    
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var placeImage: UIImageView! // Добавляем аутлет для работы с изображением // Add an outlet for working with images
@@ -73,10 +75,18 @@ class NewPlaceViewController: UITableViewController {
     // При нажатии на кнопку Save мы передаем значение заполненных полей в соответствующее свойство нашей модели // When you click on the Save button, we pass the value of the filled fields to the corresponding property of our model
     func saveNewPlace() {
         
+        var image: UIImage?
+        
+        if imageIsChanged {
+            image = placeImage.image
+        } else {
+            image = #imageLiteral(resourceName: "imagePlaceholder") // Добавляем новое изображение если пользователь не выбрал изображение // Add a new image if the user has not selected an image
+        }
+        
         newPlace = Place(name: placeName.text!,
                          location: placeLocation.text,
                          type: placeType.text,
-                         image: placeImage.image,
+                         image: image,
                          restaurantImage: nil)
     }
 
@@ -128,6 +138,7 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
         placeImage.image = info[.editedImage] as? UIImage // Мы взяли значение по ключу .editedImage и присвоили его как UIImage свойству imageOfPlace для того чтобы использовать отредактированное пользователем изображение // We took the value by the .editedImage key and assigned it as a UIImage to the imageOfPlace property in order to use the user-edited image
         placeImage.contentMode = .scaleAspectFill // Позволяет маcштабировать изображение // Allows you to scale the image
         placeImage.clipsToBounds = true // Обрезка изображения по границе UIImage // Cropping an Image to a UIImage Border
+        imageIsChanged = true
         dismiss(animated: true) // Закрываем ImagePickerController // Close ImagePickerController
     }
 }

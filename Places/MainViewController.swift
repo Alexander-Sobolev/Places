@@ -59,8 +59,9 @@ class MainViewController: UITableViewController {
     // The method that determines the height of the rows: heightForRowAt indexPath
     //override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     //  return 85   // Высоту строки мы настроили через Интерфейсбилдер поэтому данные строки кода можно удалять, но я оставлю для общего понимания // We adjusted the height of the line through the Interface Builder, so these lines of code can be deleted, but I'll leave it for general understanding
-    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {} // Объявляем метод для выхода с TabelView New Places на Table View My Best Restaurants // Declaring a method to exit from TableView New Places to Table View My Best Restaurants
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {} // Объявляем метод для выхода с TabelView New Places на Table View My Best Restaurants // Declaring a method to exit from TableView New Places to Table View My Best Restaurants
     // Мы не будем реализовывать этот метод, нам просто нужно чтобы мы могли на него сослаться и закрепить кнопку Cancel // We won't be implementing this method, we just need to be able to reference it and fix the Cancel button
+    // Переименовываем метод cancelAction на unwindSegue и связываем его с кнопкой Save // Rename the cancelAction method to unwindSegue and associate it with the Save button
     }
 
     /*

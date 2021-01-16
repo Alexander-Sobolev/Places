@@ -8,6 +8,8 @@
 import UIKit
 
 class NewPlaceViewController: UITableViewController {
+    
+    var newPlace: Place?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var placeImage: UIImageView! // Добавляем аутлет для работы с изображением // Add an outlet for working with images
@@ -22,6 +24,8 @@ class NewPlaceViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         saveButton.isEnabled = false // По умолчанию кнопка Save будет отключена // The Save button will be disabled by default
+        
+        placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
 
     // MARK: - Table View Delegate
@@ -66,6 +70,20 @@ class NewPlaceViewController: UITableViewController {
             view.endEditing(true)
         }
     }
+    // При нажатии на кнопку Save мы передаем значение заполненных полей в соответствующее свойство нашей модели // When you click on the Save button, we pass the value of the filled fields to the corresponding property of our model
+    func saveNewPlace() {
+        
+        newPlace = Place(name: placeName.text!,
+                         location: placeLocation.text,
+                         type: placeType.text,
+                         image: placeImage.image,
+                         restaurantImage: nil)
+    }
+
+    @IBAction func cancelAction(_ sender: Any) {
+        dismiss(animated: true) // Работаем с кнопкой Cancel // Working with the Cancel button
+    }
+    
 }
 
     
@@ -78,6 +96,15 @@ extension NewPlaceViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc private func textFieldChanged() {
+        
+        if placeName.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false // Делаем доступной кнопку Save при вводе данных и недоступной при их отсутсвии // We make the Save button available when entering data and unavailable if there is none
+        }
     }
 }
     
